@@ -1,3 +1,13 @@
+var brewApi = (function() {
+    var baseURL = "/api";
+    
+    return {
+        getBatches: function(query) {
+            return $.ajax({url: baseURL + "/batches", data: query});
+        }
+    }
+}());
+
 
 var Batch = React.createClass({
     propTypes: {
@@ -28,11 +38,23 @@ var BatchList = React.createClass({
     propTypes: { batches:React.PropTypes.array},
     getInitialState: function(){
         return {
-            batches: (this.props.batches || [
-                {name:"Oatmeal Stout", date:"12.03.2016"},
-                {name:"Blind Pig IPA", date: "01.02.2016"}
-            ])
+            batches: (this.props.batches || [])
         };
+    },
+    componentDidMount: function() {
+        this.getBatches();
+    },
+    getBatches: function() {
+        brewApi.getBatches({}).done(function(data) {
+            if(data && data.batches){
+                this.setState({
+                    batches: data.batches
+                });
+            } else {
+                console.log("bad ajax response");
+                console.log(data);
+            }
+        }.bind(this));
     },
     onBatch: function(batch) {
         this.state.batches.push(batch);
