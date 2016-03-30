@@ -34,6 +34,59 @@ var Batch = React.createClass({
     }
 
 });
+
+var BatchForm = React.createClass({
+    propTypes: {
+        onNewBatch: React.PropTypes.func.isRequired
+    },
+    getInitialState: function() {
+        return {
+            name: '',
+            date: ''
+        }
+    },
+    changeName: function(ev) {
+        this.setState({
+            name: ev.target.value
+        })
+    },
+    changeDate: function(ev) {
+        this.setState({
+            date: ev.target.value
+        })
+    },
+    addBatch: function(ev) {
+        ev.preventDefault();
+        
+        this.props.onNewBatch({
+            name: this.state.name,
+            date: this.state.date
+        });
+        this.setState({
+            name: '',
+            date: ''
+        });
+    },
+    render: function() {
+        return (
+            <p>
+            <form role='form'  onSubmit={this.addBatch}>
+                <div className='form-group'>
+                    <label htmlFor='name'>Name:</label>
+                    <input type='text' className='form-control' id='name' value={this.state.name} onChange={this.changeName} placeholder='Name'/>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='date'>Date:</label>
+                    <input type='text' className='form-control' id='date' value={this.state.date} onChange={this.changeDate} placeholder='Date'/>
+                </div>
+                <button type='submit' className='btn btn-default'>Start New Batch</button>
+            </form>
+            </p>
+        )
+    }
+})
+
+
 var BatchList = React.createClass({
     propTypes: { batches:React.PropTypes.array},
     getInitialState: function(){
@@ -56,7 +109,7 @@ var BatchList = React.createClass({
             }
         }.bind(this));
     },
-    onBatch: function(batch) {
+    onNewBatch: function(batch) {
         this.state.batches.push(batch);
         this.setState({batches: this.state.batches})
     },
@@ -66,12 +119,20 @@ var BatchList = React.createClass({
         });
         
         return (
-            <div className="list-group">
-                {batches}
+            <div>
+            <BatchForm onNewBatch={this.onNewBatch} />
+            <div className="panel panel-default">
+                <div className="panel-heading">
+                    <h3 className="panel-title">Batches</h3>
+                </div>
+                <div className="list-group">
+                    {batches}
+                </div>
+            </div>
             </div>
         )
     }
-})
+});
 
 
 ReactDOM.render( <BatchList/>, 

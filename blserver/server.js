@@ -1,7 +1,7 @@
 var express = require('express'),
     //path = require('path'),
     //compression = require('compression'),
-    api = require('./api/api'),
+    api = require('./server/serverApi'),
     app = express();
 
 app.set('port', process.env.PORT || 5000);
