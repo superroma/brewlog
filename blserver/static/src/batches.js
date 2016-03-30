@@ -1,3 +1,13 @@
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
 var brewApi = (function() {
     var baseURL = "/api";
     
@@ -23,11 +33,13 @@ var brewApi = (function() {
 
 var Batch = React.createClass({
     propTypes: {
+        id: React.PropTypes.string.isRequired,
         name: React.PropTypes.string.isRequired,
         date: React.PropTypes.string.isRequired
     },
     getInitialState: function () {
         return {
+            id: this.props.id,
             name: this.props.name,
             date: this.props.date
         };
@@ -71,13 +83,11 @@ var BatchForm = React.createClass({
         ev.preventDefault();
         
         this.props.onNewBatch({
+            id: guid(),
             name: this.state.name,
             date: this.state.date
         });
-        this.setState({
-            name: '',
-            date: ''
-        });
+        this.setState(this.getInitialState());
     },
     render: function() {
         return (
@@ -123,21 +133,14 @@ var BatchList = React.createClass({
     },
     onNewBatch: function(batch) {
         brewApi.createBatch(batch).done(function(data){
-            if(data && data.batches){
-                this.setState({
-                    batches: data.batches
-                });
-            } else {
-                console.log("bad ajax response");
-                console.log(data);
-            }
+            this.getBatches();
         }.bind(this));
         //this.state.batches.push(batch);
         //this.setState({batches: this.state.batches})
     },
     render:function() {
         var batches = this.state.batches.map(function(batch){
-           return <Batch key={batch.name} name={batch.name} date={batch.date}/> 
+           return <Batch key={batch.id} id={batch.id} name={batch.name} date={batch.date}/> 
         });
         
         return (
