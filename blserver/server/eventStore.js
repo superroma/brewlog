@@ -22,7 +22,10 @@ function getEvents(id, iteratee) {
        iteratee = id 
     }
     if(iteratee) {
-        async.eachSeries(store, iteratee)
+        async.eachSeries(store, function(event, cb){
+            iteratee(event)
+            return cb();
+        })
     }
     return;
 }
