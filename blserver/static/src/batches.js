@@ -3,7 +3,19 @@ var brewApi = (function() {
     
     return {
         getBatches: function(query) {
-            return $.ajax({url: baseURL + "/batches", data: query});
+            return $.ajax({
+                url: baseURL + "/batches", 
+                data: query
+            })
+        },
+        createBatch: function(batch) {
+            return $.ajax({
+                method: 'POST',
+                url: baseURL + "/batches", 
+                data: JSON.stringify(batch),
+                contentType: 'application/json',
+                dataType: 'json'
+            })
         }
     }
 }());
@@ -110,8 +122,18 @@ var BatchList = React.createClass({
         }.bind(this));
     },
     onNewBatch: function(batch) {
-        this.state.batches.push(batch);
-        this.setState({batches: this.state.batches})
+        brewApi.createBatch(batch).done(function(data){
+            if(data && data.batches){
+                this.setState({
+                    batches: data.batches
+                });
+            } else {
+                console.log("bad ajax response");
+                console.log(data);
+            }
+        }.bind(this));
+        //this.state.batches.push(batch);
+        //this.setState({batches: this.state.batches})
     },
     render:function() {
         var batches = this.state.batches.map(function(batch){
