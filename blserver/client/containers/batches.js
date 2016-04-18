@@ -1,3 +1,6 @@
+import React, { Component, PropTypes } from 'react'
+
+
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -159,7 +162,4 @@ var BatchList = React.createClass({
     }
 });
 
-
-ReactDOM.render( <BatchList/>, 
-    document.getElementById('view')
-);
+module.exports = BatchList
