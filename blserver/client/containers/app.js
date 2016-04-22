@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import BatchList from './batches.js'
+import BatchList from '../components/batches.js'
 
 export default class App extends Component {
     constructor(props){

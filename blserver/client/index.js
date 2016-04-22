@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import App from './containers/app'
+import 
 //import configureStore from './store/configureStore'
 
 //const store = configureStore()
