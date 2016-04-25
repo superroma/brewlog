@@ -7,7 +7,7 @@ describe('mapUrl', () => {
       action: null,
       params: []
     });
-  });
+  });      
 
   it('extracts nothing if the url is empty', () => {
     const url = '';

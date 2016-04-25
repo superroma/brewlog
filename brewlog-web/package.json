@@ -1,27 +1,14 @@
 {
-  "name": "react-redux-universal-hot-example",
-  "description": "Example of an isomorphic (universal) webapp using react redux and hot reloading",
-  "author": "Erik Rasmussen <rasmussenerik@gmail.com> (http://github.com/erikras)",
-  "license": "MIT",
-  "version": "0.9.0",
+  "name": "brewlog-web",
+  "description": "BrewLog web app server",
+  "author": "Roman Eremin <roman.eremin@gmail.com> (https://github.com/superroma)",
+  "license": "UNLICENSED",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/erikras/react-redux-universal-hot-example"
+    "url": "https://github.com/superroma/brewlog"
   },
-  "homepage": "https://github.com/erikras/react-redux-universal-hot-example",
-  "keywords": [
-    "react",
-    "isomorphic",
-    "universal",
-    "webpack",
-    "express",
-    "hot reloading",
-    "react-hot-reloader",
-    "redux",
-    "starter",
-    "boilerplate",
-    "babel"
-  ],
+  "homepage": "https://github.com/superroma/brewlog",
   "main": "bin/server.js",
   "scripts": {
     "start": "concurrent --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
