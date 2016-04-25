@@ -15,7 +15,7 @@ module.exports = Object.assign({
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT,
   app: {
-    title: 'BrewLog web',
+    title: 'Brew Log',
     description: 'BrewLog web app server',
     head: {
       titleTemplate: 'BrewLog web: %s',

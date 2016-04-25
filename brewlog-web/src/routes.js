@@ -5,6 +5,7 @@ import {
     App,
     Chat,
     Home,
+    Batches,
     Widgets,
     About,
     Login,
@@ -46,6 +47,9 @@ export default (store) => {
       </Route>
 
       { /* Routes */ }
+      <Route path="batches" component={Batches}>
+        <Route path=":batchId" component={Batches}/>
+      </Route>
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>

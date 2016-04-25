@@ -55,7 +55,7 @@ export default class Chat extends Component {
 
     return (
       <div className={style.chat + ' container'}>
-        <h1 className={style}>Chat</h1>
+        <h1 className={style}>Chat.</h1>
 
         {user &&
         <div>
