@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer');
 
 
 module.exports = {
@@ -8,6 +8,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
+    'tether',
     'bootstrap-loader',
     './src/index'
   ],
@@ -17,7 +18,11 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      "window.Tether": "tether"
+    }),
   ],
   module: {
     loaders: [
@@ -34,7 +39,8 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
         loader: 'file'
       },
-      { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
+      // Bootstrap 4
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' },
     ]
   },
   postcss: [ autoprefixer ],
