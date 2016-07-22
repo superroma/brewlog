@@ -1,8 +1,0 @@
-{
-  "name": "brewlog-web",
-  "description": "BrewLog app server",
-  "repository": "https://github.com/superroma/brewlog",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": [
-  ]
-}
