@@ -39,7 +39,7 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
         loader: 'file'
       },
-      // Bootstrap 4
+      // Bootstrap 4 scrips - jquery
       { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' },
     ]
   },
