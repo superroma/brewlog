@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import {Link} from 'react-router'
-import {BatchesView} from './BatchesView'
+//import {BatchesView} from './BatchesView'
 
 const NavLink = (props) => (
   <Link {...props} className="nav-item nav-link" activeClassName="active"/>
@@ -20,9 +20,6 @@ const NavBar = () => (
 )
 
 export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.object.isRequired
-  }
   render() {
     return (
       <div className="container">
@@ -32,3 +29,4 @@ export default class App extends Component {
     );
   }
 }
+App.propTypes = {children: PropTypes.object.isRequired}

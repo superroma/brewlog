@@ -9,7 +9,7 @@ import {
 } from './Stubs'
 import {BatchDetailView} from './BatchDetailView'
 
-export default () => (
+export const Routes = () => (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home}/>
