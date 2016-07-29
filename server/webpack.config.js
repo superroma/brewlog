@@ -8,6 +8,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
     'tether',
     'bootstrap-loader',
     './src/index'
@@ -26,7 +27,7 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['react-hot', 'babel'],
+      { test: /\.js$/, loaders: ['babel'],
         include: path.join(__dirname, 'src')
       },
       { test: /\.css$/, loaders: [ 'style', 'css', 'postcss' ] },
