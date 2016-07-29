@@ -1,5 +1,6 @@
 import React from 'react'
+import {BatchMain} from './BatchComponents'
 
 export const BatchDetailView = () => (
-  <h1>Batch detail view</h1>
+  <BatchMain/>
 )
