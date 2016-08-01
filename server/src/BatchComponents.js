@@ -31,16 +31,17 @@ export const BatchMain = () => (
   </form>
 )
 
-export const BatchRecipe = () => (
+export const BatchRecipe = (props) => (
   <div className="list-group">
-    <BatchRecipeItem amount="7.00 kg" name="Pale Malt (2 Row) Bel (5.5 EBC)" type="Grain" info="90.9%" />
-    <BatchRecipeItem amount="0.70 kg" name="Cara 150 (150.0 EBC)" type="Grain" info="9.1%" />
-    <BatchRecipeItem amount="30.00 g" name="Target [11.00%] - Boil 60 min" type="Hop" info="21.4 IBU" />
-    <BatchRecipeItem amount="40.00 g" name="Goldings, East Kent [5.00%] - Boil 15.0 min" type="Hop" info="6.4 IBU" />
-    <BatchRecipeItem amount="40.00 g" name="PGoldings, East Kent [5.00%] - Boil 5.0 min" type="Hop" info="2.6 IBU" />
-    <BatchRecipeItem amount="1.0 pkg" name="London Ale (White Labs #WLP013)" type="Yeast" info="-" />
+    {props.recipe.map(
+      (item) => (
+        <BatchRecipeItem key={item.key} {...item} />
+      )
+    )}
   </div>
 )
+BatchRecipe.propTypes={recipe: PropTypes.array.isRequired}
+
 export const BatchRecipeItem = (props) => (
 
   <a href="#" className="list-group-item">
