@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BatchMain,
   BatchRecipe,
+  BatchStyle,
 } from './BatchComponents'
 
 const sampleRecipe = [
@@ -16,5 +17,6 @@ export const BatchDetailView = () => (
   <div>
     <BatchMain/>
     <BatchRecipe recipe={sampleRecipe}/>
+    <BatchStyle recipe={sampleRecipe}/>
   </div>
 )
